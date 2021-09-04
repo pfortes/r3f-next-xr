@@ -4,8 +4,10 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 })
 
 const withOffline = require('next-offline')
+const withTM = require('next-transpile-modules')(['three', 'three/examples/jsm/loaders/GLTFLoader', '@react-three/xr'])
 
 const nextConfig = {
+  // experimental: { esmExternals: "loose" },
   webpack(config, { webpack, dev, isServer }) {
     config.plugins.push(
       new webpack.ProvidePlugin({
@@ -52,6 +54,7 @@ if (process.env.EXPORT !== 'true') {
 
 module.exports = plugins(
   [
+    withTM(nextConfig),
     [
       withOffline,
       {
