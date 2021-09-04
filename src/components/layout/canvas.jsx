@@ -21,7 +21,7 @@ const LCanvas = ({ children }) => {
   const dom = useStore((state) => state.dom)
 
   return (
-    <Canvas
+    <VRCanvas
       mode='concurrent'
       style={{
         position: 'absolute',
@@ -34,7 +34,7 @@ const LCanvas = ({ children }) => {
         <Preload all />
         {children}
       </A11yUserPreferences>
-    </Canvas>
+    </VRCanvas>
   )
 }
 
